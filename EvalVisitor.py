@@ -12,7 +12,7 @@ class EvalVisitor(CalcVisitor):
         return resultado
 
     def visitAsignacion(self, ctx):
-        nombre = ctx.ID().getText()       # obtiene el nombre "a"
+        nombre = ctx.VAR().getText()       # obtiene el nombre "a"
         valor  = self.visit(ctx.expr())   # evalúa el lado derecho
         self.variables[nombre] = valor    # guarda en memoria
         print(f"{nombre} = {valor}")
@@ -46,7 +46,7 @@ class EvalVisitor(CalcVisitor):
         return float(ctx.NUM().getText())
 
     def visitVariable(self, ctx):          # ← nuevo
-        nombre = ctx.ID().getText()
+        nombre = ctx.VAR().getText()
         if nombre not in self.variables:
             raise ValueError(f"Variable '{nombre}' no definida")
         return self.variables[nombre]
