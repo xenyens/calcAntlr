@@ -3,7 +3,7 @@ grammar Calc;
 prog : instrucciones+ EOF ;          // Un programa es una o más sentencias
 
 instrucciones
-    : ID '=' expr ';'       # Asignacion    // a = 10;
+    : VAR '=' expr ';'       # Asignacion    // a = 10;
     | expr ';'              # Evaluacion    // 20 + 4;
     ;
 
@@ -12,9 +12,9 @@ expr
     | expr op=('+'|'-') expr   # SumRes
     | '(' expr ')'             # Parentesis
     | NUM                      # Numero
-    | ID                       # Variable     // ← nuevo
+    | VAR                      # Variable     // ← nuevo
     ;
 
-ID  : [a-zA-Z_][a-zA-Z_0-9]* ;   // nombre de variable
+VAR : [a-zA-Z_][a-zA-Z_0-9]* ;   // nombre de variable
 NUM : [0-9]+ ('.' [0-9]+)? ;
 WS  : [ \t\r\n]+ -> skip ;

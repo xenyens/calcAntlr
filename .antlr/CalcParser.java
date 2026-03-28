@@ -16,7 +16,7 @@ public class CalcParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, ID=9, 
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, VAR=9, 
 		NUM=10, WS=11;
 	public static final int
 		RULE_prog = 0, RULE_instrucciones = 1, RULE_expr = 2;
@@ -35,7 +35,7 @@ public class CalcParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, "ID", "NUM", "WS"
+			null, null, null, null, null, null, null, null, null, "VAR", "NUM", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -154,7 +154,7 @@ public class CalcParser extends Parser {
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AsignacionContext extends InstruccionesContext {
-		public TerminalNode ID() { return getToken(CalcParser.ID, 0); }
+		public TerminalNode VAR() { return getToken(CalcParser.VAR, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
@@ -180,7 +180,7 @@ public class CalcParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(13);
-				match(ID);
+				match(VAR);
 				setState(14);
 				match(T__0);
 				setState(15);
@@ -242,7 +242,7 @@ public class CalcParser extends Parser {
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableContext extends ExprContext {
-		public TerminalNode ID() { return getToken(CalcParser.ID, 0); }
+		public TerminalNode VAR() { return getToken(CalcParser.VAR, 0); }
 		public VariableContext(ExprContext ctx) { copyFrom(ctx); }
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -306,13 +306,13 @@ public class CalcParser extends Parser {
 				match(NUM);
 				}
 				break;
-			case ID:
+			case VAR:
 				{
 				_localctx = new VariableContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(29);
-				match(ID);
+				match(VAR);
 				}
 				break;
 			default:

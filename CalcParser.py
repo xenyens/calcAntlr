@@ -41,7 +41,7 @@ class CalcParser ( Parser ):
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "ID", "NUM", "WS" ]
+                      "<INVALID>", "VAR", "NUM", "WS" ]
 
     RULE_prog = 0
     RULE_instrucciones = 1
@@ -58,7 +58,7 @@ class CalcParser ( Parser ):
     T__5=6
     T__6=7
     T__7=8
-    ID=9
+    VAR=9
     NUM=10
     WS=11
 
@@ -153,8 +153,8 @@ class CalcParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def ID(self):
-            return self.getToken(CalcParser.ID, 0)
+        def VAR(self):
+            return self.getToken(CalcParser.VAR, 0)
         def expr(self):
             return self.getTypedRuleContext(CalcParser.ExprContext,0)
 
@@ -196,7 +196,7 @@ class CalcParser ( Parser ):
                 localctx = CalcParser.AsignacionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 13
-                self.match(CalcParser.ID)
+                self.match(CalcParser.VAR)
                 self.state = 14
                 self.match(CalcParser.T__0)
                 self.state = 15
@@ -283,8 +283,8 @@ class CalcParser ( Parser ):
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def ID(self):
-            return self.getToken(CalcParser.ID, 0)
+        def VAR(self):
+            return self.getToken(CalcParser.VAR, 0)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariable" ):
@@ -369,7 +369,7 @@ class CalcParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 29
-                self.match(CalcParser.ID)
+                self.match(CalcParser.VAR)
                 pass
             else:
                 raise NoViableAltException(self)

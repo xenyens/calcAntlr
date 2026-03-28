@@ -49,7 +49,7 @@ class CalcLexer(Lexer):
     T__5 = 6
     T__6 = 7
     T__7 = 8
-    ID = 9
+    VAR = 9
     NUM = 10
     WS = 11
 
@@ -61,10 +61,10 @@ class CalcLexer(Lexer):
             "'='", "';'", "'*'", "'/'", "'+'", "'-'", "'('", "')'" ]
 
     symbolicNames = [ "<INVALID>",
-            "ID", "NUM", "WS" ]
+            "VAR", "NUM", "WS" ]
 
     ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
-                  "T__7", "ID", "NUM", "WS" ]
+                  "T__7", "VAR", "NUM", "WS" ]
 
     grammarFileName = "Calc.g4"
 
