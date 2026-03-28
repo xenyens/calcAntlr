@@ -1,24 +1,20 @@
 grammar Calc;
 
-// ── REGLAS DEL PARSER (minúsculas) ──────────────────
+prog : instrucciones+ EOF ;          // Un programa es una o más sentencias
 
-prog
-    : expr EOF                        // Un programa es una expresión seguida del fin de entrada
+instrucciones
+    : ID '=' expr ';'       # Asignacion    // a = 10;
+    | expr ';'              # Evaluacion    // 20 + 4;
     ;
 
 expr
-    : expr op=('*' | '/') expr       // Multiplicación y división (mayor precedencia)
-    | expr op=('+' | '-') expr       // Suma y resta (menor precedencia)
-    | '(' expr ')'                   // Expresión entre paréntesis
-    | NUM                             // Un número
+    : expr op=('*'|'/') expr   # MulDiv
+    | expr op=('+'|'-') expr   # SumRes
+    | '(' expr ')'             # Parentesis
+    | NUM                      # Numero
+    | ID                       # Variable     // ← nuevo
     ;
 
-// ── REGLAS DEL LEXER (MAYÚSCULAS) ───────────────────
-
-NUM
-    : [0-9]+ ('.' [0-9]+)?          // Número entero o decimal
-    ;
-
-WS
-    : [ \t\r\n]+ -> skip              // Ignorar espacios en blanco
-    ;
+ID  : [a-zA-Z_][a-zA-Z_0-9]* ;   // nombre de variable
+NUM : [0-9]+ ('.' [0-9]+)? ;
+WS  : [ \t\r\n]+ -> skip ;
