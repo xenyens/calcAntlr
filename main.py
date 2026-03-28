@@ -1,5 +1,3 @@
-
-
 from antlr4 import InputStream, CommonTokenStream
 from CalcLexer  import CalcLexer
 from CalcParser import CalcParser
